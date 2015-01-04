@@ -43,7 +43,7 @@ class Index(object):
             if len(request.session['caption']) > 1000:
                 request.session['message'] = "Your thoughts are too long."
                 return HTTPFound(location='/')
-            caption = cgi.escape(request.session['caption'])
+            capt = cgi.escape(request.session['caption'])
             num_views = Youtube.get_num_views(request.session['url'])
             vid = Youtube.video_id(request.session['url'])
             if num_views is False:
@@ -57,7 +57,7 @@ class Index(object):
                 request.session['message'] = "This video is already in IMG_1772."
                 return HTTPFound(location='/')
             # ok the video and caption are okay
-            video = Video(youtube_id=vid,caption="test",added_by="test", views=
+            video = Video(youtube_id=vid,caption=capt,added_by="test", views=
                         num_views)
             DBSession.add(video)
         request.session['message'] = "Video added to IMG_1772."
