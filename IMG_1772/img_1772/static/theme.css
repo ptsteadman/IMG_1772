@@ -24,6 +24,7 @@ h1{
     border-radius: 1px;
     margin-top: 3px;
     border: 1px solid darkslategray;
+    color: black;
 }
 
 .container .form-control:focus {
@@ -61,11 +62,11 @@ h1{
     background-color: white;
 }
 
-.add-video {
+#add-video {
     padding-top: 10px;
 }
 
-.add-video p {
+#add-video p {
     margin-top: 10px;
 }
 

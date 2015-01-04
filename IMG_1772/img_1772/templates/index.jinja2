@@ -1,51 +1,54 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="pyramid web application">
-    <meta name="author" content="Pylons Project">
-    <link rel="shortcut icon" href="{{
-    request.static_url('img_1772:static/pyramid-16x16.png') }}">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="website for sharing videos with less than
+100 views">
+<meta name="author" content="Patrick Steadman and Alina Nguyen">
+<link rel="shortcut icon" href="{{
+request.static_url('img_1772:static/pyramid-16x16.png') }}">
 
-    <title>IMG_1772</title>
-
-    <link href="//oss.maxcdn.com/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
-
-    <link href="{{request.static_url('img_1772:static/theme.css')}}" rel="stylesheet">
-    <link href="{{request.static_url('img_1772:static/texgyrescholaregular.css')}}" rel="stylesheet">
-    <link href="{{request.static_url('img_1772:static/texgyrescholabold.css')}}" rel="stylesheet">
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
+<title>IMG_1772</title>
+<link href="//oss.maxcdn.com/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="{{request.static_url('img_1772:static/theme.css')}}" rel="stylesheet">
+<link href="{{request.static_url('img_1772:static/texgyrescholaregular.css')}}" rel="stylesheet">
+<link href="{{request.static_url('img_1772:static/texgyrescholabold.css')}}" rel="stylesheet">
+<script src="//oss.maxcdn.com/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="{{request.static_url('img_1772:static/site.js')}}"></script>
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
       <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="//oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
-  </head>
+</head>
 
-  <body>
-  <div class="container">
+<body>
+<div class="container">
     <div class="row">
-      <div class="col-xs-6">
-        <div class="content">
-          <h1>IMG_1772</h1>
+        <div class="col-xs-6">
+            <div class="content">
+                <h1>IMG_1772</h1>
+            </div>
         </div>
-      </div>
-      <div class="col-xs-6">
-          <p class="align pull-right">A website for videos
-          with &lt; 100 views.</p>
+        <div class="col-xs-6">
+            <p class="align pull-right">A website for videos
+            with &lt; 100 views.</p>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12 col-md-6">
-            <form class="form add-video">
-                    <input type="text" class="form-control" placeholder="Enter a youtube URL...">
-                    <textarea class="form-control" rows="3" placeholder="Enter your thoughts about this video..."></textarea>
-                    <p
-                    class="pull-left">Only videos with less than 100 views will
-                    be accepted.</p>
-                    <button  type="button" class="btn
-                        btn-default pull-right">Submit</button>
+            <form id="add-video" class="form" method="post">
+                <input name="url" type="text" class="form-control" value="{{
+                url }}" placeholder="Enter a youtube URL...">
+                <textarea name="caption" class="form-control" rows="3"
+                    placeholder="Enter your thoughts about this video...">{{
+                    caption }}</textarea>
+                <p
+                class="pull-left">{{ message }}</p>
+                <button  type="submit" class="btn
+                    btn-default pull-right">Submit</button>
             </form>
         </div>
         <div class="col-md-6 hidden-xs hidden-sm" style="border-left: 2px solid
@@ -67,9 +70,5 @@
         </div>
     </div>
 </div>
-
-
-<script src="//oss.maxcdn.com/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="//oss.maxcdn.com/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
-  </body>
+</body>
 </html>

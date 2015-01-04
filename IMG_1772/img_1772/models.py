@@ -18,10 +18,12 @@ DBSession = scoped_session(sessionmaker(extension=ZopeTransactionExtension()))
 Base = declarative_base()
 
 
-class MyModel(Base):
-    __tablename__ = 'models'
+class Video(Base):
+    __tablename__ = 'videos'
     id = Column(Integer, primary_key=True)
-    name = Column(Text)
-    value = Column(Integer)
+    youtube_id = Column(Text)
+    caption = Column(Text)
+    views = Column(Integer)
+    added_by = Column(Text)
 
-Index('my_index', MyModel.name, unique=True, mysql_length=255)
+Index('youtube_id_index', Video.youtube_id, unique=True, mysql_length=255)
