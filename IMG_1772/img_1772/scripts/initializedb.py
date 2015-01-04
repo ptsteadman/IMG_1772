@@ -35,6 +35,3 @@ def main(argv=sys.argv):
     engine = engine_from_config(settings, 'sqlalchemy.')
     DBSession.configure(bind=engine)
     Base.metadata.create_all(engine)
-    with transaction.manager:
-        video = Video(youtube_id='test',caption="test",added_by="test", views=1)
-        DBSession.add(video)

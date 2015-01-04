@@ -57,18 +57,16 @@ request.static_url('img_1772:static/pyramid-16x16.png') }}">
             request.static_url('img_1772:static/person.svg') }}">
         </div>
     </div>
-    <div class="row">
+    {% for vid in videos %}
+    <div class="row video">
         <div class="col-xs-12">
-            <img class="crouch" src=" {{
-            request.static_url('img_1772:static/crouch.svg') }}">
+           <iframe class="player" 
+    src="http://www.youtube.com/embed/{{ vid['youtube_id'] }}?controls=0" frameborder="0"
+    allowfullscreen></iframe> 
+            <p>{{ vid['caption'] }}</p>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <img class="crouch" src=" {{
-            request.static_url('img_1772:static/person.svg') }}">
-        </div>
-    </div>
+    {% endfor %}
 </div>
 </body>
 </html>
