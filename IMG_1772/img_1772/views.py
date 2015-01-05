@@ -60,7 +60,8 @@ class Index(object):
             video = Video(youtube_id=vid,caption=capt,added_by="test", views=
                         num_views)
             DBSession.add(video)
-        request.session['message'] = "Video added to IMG_1772."
+            request.session['message'] = "Video added to IMG_1772."
+            return HTTPFound(location='/')
         return HTTPFound(location='/')
 
 conn_err_msg = """\

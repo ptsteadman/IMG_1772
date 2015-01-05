@@ -30,10 +30,10 @@ class Youtube(object):
 
     @staticmethod
     def get_num_views(url):
-        vid = Youtube.video_id(url)
-        data_url = "https://gdata.youtube.com/feeds/api/videos/" + vid
-        data_url = data_url + "?v=2&alt=json"
         try:
+            vid = Youtube.video_id(url)
+            data_url = "https://gdata.youtube.com/feeds/api/videos/" + vid
+            data_url = data_url + "?v=2&alt=json"
             data = json.load(urllib2.urlopen(data_url))
             num_views = data['entry']['yt$statistics']['viewCount']
         except:
