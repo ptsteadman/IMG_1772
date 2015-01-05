@@ -1,4 +1,5 @@
-@import url(//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700);
+
+/* General */ 
 body {
   font-family: 'texgyrescholaregular',serif;
   color: black;
@@ -13,32 +14,44 @@ h6 {
   font-family: 'texgyrescholabold',serif;
 }
 
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+/* Header */
+
 h1{
     font-size: 42px;
     margin-bottom: 20px;
-  text-shadow: 0px 0px 1px black;
 }
 
 .link {
     cursor: pointer;
+    text-decoration: none;
+    color: black;
 }
 .link:hover {
     color: #bc2131;
+    text-decoration: none;
 }
 
 .info {
     margin-top: 20px;
     line-height: 45px;
     height: 45px;
-    text-shadow: 0px 0px 1px black;
     text-size: 24px;
 }
 
 .align {
     margin-top: 20px;
     line-height: 45px;
-    text-shadow: 0px 0px 1px black;
 }
+
+/* Add Video Form */
 
 .container .form-control {
     border-radius: 1px;
@@ -51,6 +64,52 @@ h1{
     box-shadow: 0px 0px 2px #bc2131;
 }
 
+.form-control::-webkit-input-placeholder {
+   color: black;
+}
+
+.form-control:-moz-placeholder { /* Firefox 18- */
+   color: black;  
+}
+
+.form-control::-moz-placeholder {  /* Firefox 19+ */
+   color: black;  
+}
+
+.form-control:-ms-input-placeholder {  
+   color: black;  
+}
+
+.container .btn {
+    margin-top: 4px;
+    border: 1px solid darkslategray;
+    border-radius: 1px;
+}
+
+.add-video {
+    padding: 20px 8px !important;
+}
+.add-video p {
+    font-size: 13px;
+    margin-top: 8px;
+    margin-bottom: 0px;
+    line-height: 1.1;
+    padding-left: 4px;
+}
+
+
+.validation {
+    width: 250px;
+}
+
+.crouch {
+    display: block;
+    height: 154px;
+    margin: 0 auto;
+}
+
+
+/* Videos */
 
 .video {
     padding: 0px 0px !important;
@@ -71,29 +130,9 @@ h1{
 .video-caption {
     height: 65px;
     overflow-y: scroll;
+    padding: 4px 4px;
 }
 
-.form-control::-webkit-input-placeholder {
-   color: black;
-}
-
-.form-control:-moz-placeholder { /* Firefox 18- */
-   color: red;  
-}
-
-.form-control::-moz-placeholder {  /* Firefox 19+ */
-   color: red;  
-}
-
-.form-control:-ms-input-placeholder {  
-   color: red;  
-}
-
-.container .btn {
-    margin-top: 4px;
-    border: 1px solid darkslategray;
-    border-radius: 1px;
-}
 
 .container .row {
     border-left: 4px solid black;
@@ -102,26 +141,5 @@ h1{
     padding: 15px 8px;
     box-shadow: 0px 0px 2px black;
     background-color: white;
-}
-
-.add-video {
-    padding: 30px 8px !important;
-}
-.add-video p {
-    font-size: 13px;
-    margin-top: 8px;
-    margin-bottom: 0px;
-    line-height: 1.1;
-}
-
-
-.validation {
-    width: 200px;
-}
-
-.crouch {
-    display: block;
-    height: 154px;
-    margin: 0 auto;
 }
 

@@ -42,27 +42,27 @@ class Index(object):
             request.session['caption']= request.params['caption']
             if len(request.session['caption']) > 1000:
                 request.session['message'] = "Your thoughts are too long."
-                return HTTPFound(location='/')
+                return HTTPFound(location='/IMG_1772')
             capt = cgi.escape(request.session['caption'])
             num_views = Youtube.get_num_views(request.session['url'])
             vid = Youtube.video_id(request.session['url'])
             if num_views is False:
                 request.session['message'] = "That URL has a problem."
-                return HTTPFound(location='/')
+                return HTTPFound(location='/IMG_1772')
             if num_views > 100:
                 request.session['message'] = "This video has over 100 views."
-                return HTTPFound(location='/')
+                return HTTPFound(location='/IMG_1772')
             test = DBSession.query(Video).filter(Video.youtube_id == vid).first()
             if test is not None:
                 request.session['message'] = "This video is already in IMG_1772."
-                return HTTPFound(location='/')
+                return HTTPFound(location='/IMG_1772')
             # ok the video and caption are okay
             video = Video(youtube_id=vid,caption=capt,added_by="test", views=
                         num_views)
             DBSession.add(video)
             request.session['message'] = "Video added to IMG_1772."
-            return HTTPFound(location='/')
-        return HTTPFound(location='/')
+            return HTTPFound(location='/IMG_1772')
+        return HTTPFound(location='/IMG_1772')
 
 conn_err_msg = """\
 Pyramid is having a problem using your SQL database.  The problem
