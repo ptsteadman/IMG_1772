@@ -150,7 +150,7 @@ iframe {
 .video-caption {
     height: 65px;
     overflow-y: scroll;
-    padding: 4px 4px;
+    padding: 4px 6px;
     background-color: white;
 }
 
@@ -164,3 +164,17 @@ iframe {
     background-color: black;
 }
 
+.title {
+  font-family: 'texgyrescholabold_italic',serif;
+  font-size: 16px;
+}
+
+.views {
+    font-family: 'textgryeschola';
+    font-size: 12px;
+}
+
+.text {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}

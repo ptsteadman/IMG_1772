@@ -40,4 +40,16 @@ class Youtube(object):
             return False
         return int(num_views)
 
+    @staticmethod
+    def get_title(url):
+        try:
+            vid = Youtube.video_id(url)
+            data_url = "https://gdata.youtube.com/feeds/api/videos/" + vid
+            data_url = data_url + "?v=2&alt=json"
+            data = json.load(urllib2.urlopen(data_url))
+            title = data['entry']['title']['$t']
+        except:
+            return False
+        return title
+
 

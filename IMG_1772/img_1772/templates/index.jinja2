@@ -15,6 +15,7 @@ request.static_url('img_1772:img_1772_static/favicon.ico') }}">
 <link href="{{request.static_url('img_1772:img_1772_static/theme.css')}}" rel="stylesheet">
 <link href="{{request.static_url('img_1772:img_1772_static/texgyrescholaregular.css')}}" rel="stylesheet">
 <link href="{{request.static_url('img_1772:img_1772_static/texgyrescholabold.css')}}" rel="stylesheet">
+<link href="{{request.static_url('img_1772:img_1772_static/texgyrescholabolditalic.css')}}" rel="stylesheet">
 <script src="//oss.maxcdn.com/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="{{request.static_url('img_1772:img_1772_static/site.js')}}"></script>
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -64,7 +65,9 @@ request.static_url('img_1772:img_1772_static/favicon.ico') }}">
     src="http://www.youtube.com/embed/{{vid['youtube_id']}}?controls=1&showinfo=0&modestbranding=1i&cc_load_policy=1" frameborder="0"
     allowfullscreen></iframe> 
         <div class="video-caption">
-            {{ vid['caption'].replace('\n','<br />') }}
+            <div class="title"> {{ vid['title'] }} <span class="pull-right views"> {{
+                    vid['views'] }} views</div>
+            <div class="text">{{ vid['caption'] }}</div>
         </div>
         </div>
     {% endfor %}

@@ -5,6 +5,7 @@ from Youtube import Youtube
 import cgi
 
 from sqlalchemy.exc import DBAPIError
+from sqlalchemy import desc
 
 from .models import (
     DBSession,
@@ -27,7 +28,7 @@ class Index(object):
         else:
             message = "Only videos with less than 100 views will be accepted."
         try:
-            videos = DBSession.query(Video)
+            videos = DBSession.query(Video).order_by(desc(Video.date_added))
         except DBAPIError:
             return Response(conn_err_msg, content_type='text/plain', status_int=500)
         return {'project': 'IMG_1772','url': url, 'caption': caption, 'message':
@@ -45,8 +46,9 @@ class Index(object):
                 return HTTPFound(location='/IMG_1772')
             capt = cgi.escape(request.session['caption'])
             num_views = Youtube.get_num_views(request.session['url'])
+            t = Youtube.get_title(request.session['url'])
             vid = Youtube.video_id(request.session['url'])
-            if num_views is False:
+            if num_views is False or t is False:
                 request.session['message'] = "That URL has a problem."
                 return HTTPFound(location='/IMG_1772')
             if num_views > 100:
@@ -57,7 +59,7 @@ class Index(object):
                 request.session['message'] = "This video is already in IMG_1772."
                 return HTTPFound(location='/IMG_1772')
             # ok the video and caption are okay
-            video = Video(youtube_id=vid,caption=capt,added_by="test", views=
+            video = Video(youtube_id=vid,title=t,caption=capt,added_by="test", views=
                         num_views)
             DBSession.add(video)
             request.session['message'] = "Video added to IMG_1772."
