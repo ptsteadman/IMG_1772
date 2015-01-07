@@ -46,7 +46,8 @@ request.static_url('img_1772:img_1772_static/favicon.ico') }}">
                 <textarea name="caption" class="form-control" rows="3"
                     placeholder="Enter your thoughts about this video...">{{
                     caption }}</textarea>
-                        <p class="pull-left validation">{{ message }}</p>
+                        <p class="pull-left hidden-xs">{{ message }}</p>
+                        <p class="pull-left validation visible-xs">{{ message }}</p>
                         <button  type="submit" class="btn btn-default pull-right">Submit</button>
             </form>
         </div>
@@ -56,11 +57,11 @@ request.static_url('img_1772:img_1772_static/favicon.ico') }}">
             request.static_url('img_1772:img_1772_static/person.svg') }}">
         </div>
     </div>
-    <div class="video row">
+    <div id="videos" class="row">
     {% for vid in videos %}
         <div class="video col-xs-12 col-sm-6 col-lg-4">
            <iframe class="player" 
-    src="http://www.youtube.com/embed/{{ vid['youtube_id'] }}?controls=0" frameborder="0"
+    src="http://www.youtube.com/embed/{{vid['youtube_id']}}?controls=1&showinfo=0&modestbranding=1i&cc_load_policy=1" frameborder="0"
     allowfullscreen></iframe> 
         <div class="video-caption">
             {{ vid['caption'].replace('\n','<br />') }}

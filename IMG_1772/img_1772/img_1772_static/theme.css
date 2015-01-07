@@ -51,6 +51,16 @@ h1{
     line-height: 45px;
 }
 
+.container .row {
+    background-color: #f4f4f4;
+    border-left: 4px solid black;
+    border-right: 4px solid black;
+    border-bottom: 4px solid black;
+    padding: 15px 8px;
+    box-shadow: 0px 0px 4px black;
+    margin: 0 -12px;
+}
+
 /* Add Video Form */
 
 .container .form-control {
@@ -91,15 +101,19 @@ h1{
 }
 .add-video p {
     font-size: 13px;
-    margin-top: 8px;
-    margin-bottom: 0px;
-    line-height: 1.1;
     padding-left: 4px;
+    margin-top: 4px;
+    width: auto;
+    line-height: 34px;
+    height: 34px;
+    margin-bottom: 0px;
 }
 
 
-.validation {
-    width: 250px;
+p.validation {
+    margin-top: 6px;
+    line-height: 1.2;
+    width: 180px;
 }
 
 .crouch {
@@ -111,13 +125,19 @@ h1{
 
 /* Videos */
 
+iframe {
+    filter: grayscale(.9) hue-rotate(90deg);
+    -webkit-filter: grayscale(.9) hue-rotate(90deg);
+    -moz-filter: grayscale(.9) hue-rotate(90deg);
+}
+
 .video {
     padding: 0px 0px !important;
-    border-right: none !important;
+    border-right: 4px solid black !important;
+    border-bottom: 4px solid black !important;
 }
 
 .video .col-sm-6 {
-    border-right: 4px solid black !important;
     height: 100%;
     overflow: hidden;
 }
@@ -131,15 +151,16 @@ h1{
     height: 65px;
     overflow-y: scroll;
     padding: 4px 4px;
+    background-color: white;
 }
 
 
-.container .row {
+#videos {
     border-left: 4px solid black;
-    border-right: 4px solid black;
+    border-right: none;
     border-bottom: 4px solid black;
-    padding: 15px 8px;
+    padding: 0px 0px;
     box-shadow: 0px 0px 2px black;
-    background-color: white;
+    background-color: black;
 }
 
