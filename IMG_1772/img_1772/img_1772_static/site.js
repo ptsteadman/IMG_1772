@@ -5,6 +5,10 @@ $(document).ready(function(){
         console.log("sup");
     });
 
+    $("input[name=url]").on("keyup",function(){
+        console.log("hey");
+    });
+
     $("#load-more").click(function(){
         // do ajax call to append more vids
 
@@ -19,6 +23,16 @@ $(document).ready(function(){
             $("#videos").append(data);
         });
         vid_no += 6;
+    });
+
+    $(".player-wrapper").hover(function(){
+        console.log("hey");
+        $(this).css("-webkit-filter","none");
+    });
+    
+    $(".player-wrapper").on("touchstart",function(){
+        console.log("hey");
+        $(this).css("-webkit-filter","none");
     });
 
 });

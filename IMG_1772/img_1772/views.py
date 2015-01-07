@@ -22,6 +22,8 @@ class Index(object):
         request = self.request
         url = request.session['url'] if 'url' in request.session else ""
         caption = request.session['caption'] if 'caption' in request.session else ""
+        request.session['url'] = ""
+        request.session['caption'] = ""
         if 'message' in request.session:
             message = request.session['message']
             del(request.session['message'])

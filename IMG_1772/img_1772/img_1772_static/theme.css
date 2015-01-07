@@ -126,7 +126,7 @@ p.validation {
 
 /* Videos */
 
-iframe {
+.player-wrapper {
     filter: grayscale(.9) hue-rotate(90deg);
     -webkit-filter: grayscale(.9) hue-rotate(90deg);
     -moz-filter: grayscale(.9) hue-rotate(90deg);
