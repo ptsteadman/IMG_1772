@@ -28,7 +28,7 @@ class Index(object):
         else:
             message = "Only videos with less than 100 views will be accepted."
         try:
-            videos = DBSession.query(Video).order_by(desc(Video.date_added))
+            videos = DBSession.query(Video).order_by(desc(Video.date_added))[0:6]
         except DBAPIError:
             return Response(conn_err_msg, content_type='text/plain', status_int=500)
         return {'project': 'IMG_1772','url': url, 'caption': caption, 'message':
@@ -65,6 +65,17 @@ class Index(object):
             request.session['message'] = "Video added to IMG_1772."
             return HTTPFound(location='/IMG_1772')
         return HTTPFound(location='/IMG_1772')
+
+    @view_config(route_name='videos', renderer='templates/videos.jinja2',
+            request_method='GET')
+    def videos_get(self):
+        request = self.request
+        vid_no = int(request.params['vid_no']) if 'vid_no' in request.params else 0
+        try:
+            videos = DBSession.query(Video).order_by(desc(Video.date_added))[vid_no:vid_no+6]
+        except DBAPIError:
+            return Response(conn_err_msg, content_type='text/plain', status_int=500)
+        return { 'videos' : videos}
 
 conn_err_msg = """\
 Pyramid is having a problem using your SQL database.  The problem

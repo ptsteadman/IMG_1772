@@ -59,18 +59,23 @@ request.static_url('img_1772:img_1772_static/favicon.ico') }}">
         </div>
     </div>
     <div id="videos" class="row">
-    {% for vid in videos %}
-        <div class="video col-xs-12 col-sm-6 col-lg-4">
-           <iframe class="player" 
-    src="http://www.youtube.com/embed/{{vid['youtube_id']}}?controls=1&showinfo=0&modestbranding=1i&cc_load_policy=1" frameborder="0"
-    allowfullscreen></iframe> 
-        <div class="video-caption">
-            <div class="title"> {{ vid['title'] }} <span class="pull-right views"> {{
-                    vid['views'] }} views</div>
-            <div class="text">{{ vid['caption'] }}</div>
+        {% for vid in videos %}
+            <div class="video col-xs-12 col-sm-6 col-lg-4">
+               <iframe class="player" 
+        src="http://www.youtube.com/embed/{{vid['youtube_id']}}?controls=1&showinfo=0&modestbranding=1i&cc_load_policy=1" frameborder="0"
+        allowfullscreen></iframe> 
+            <div class="video-caption">
+                <div class="pull-left title"> {{ vid['title'] }}</div>
+                <div class="pull-right views">{{ vid['views'] }} views</div>
+                <div class="pull-left text">{{ vid['caption'] }}</div>
+            </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="row">
+        <div id="load-more" class="col-xs-12">
+            <center><a><h3 class="link">Load More</h3></a></center>
         </div>
-        </div>
-    {% endfor %}
     </div>
 </div>
 </body>

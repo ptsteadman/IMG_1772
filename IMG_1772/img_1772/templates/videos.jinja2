@@ -1,0 +1,12 @@
+{% for vid in videos %}
+    <div class="video col-xs-12 col-sm-6 col-lg-4">
+       <iframe class="player" 
+src="http://www.youtube.com/embed/{{vid['youtube_id']}}?controls=1&showinfo=0&modestbranding=1i&cc_load_policy=1" frameborder="0"
+allowfullscreen></iframe> 
+    <div class="video-caption">
+        <div class="pull-left title"> {{ vid['title'] }}</div>
+        <div class="pull-right views">{{ vid['views'] }} views</div>
+        <div class="pull-left text">{{ vid['caption'] }}</div>
+    </div>
+    </div>
+{% endfor %}
