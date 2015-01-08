@@ -28,6 +28,7 @@ a:hover {
 h1{
     font-size: 42px;
     margin-bottom: 20px;
+    margin-top: 20px !important;
 }
 
 .link {
