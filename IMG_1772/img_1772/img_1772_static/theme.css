@@ -117,11 +117,19 @@ p.validation {
     width: 180px;
 }
 
-.crouch {
+#crouch {
+    display: block;
+    height: 154px;
+    margin: 0 auto;
+    display: none;
+}
+
+#person {
     display: block;
     height: 154px;
     margin: 0 auto;
 }
+
 
 
 /* Videos */

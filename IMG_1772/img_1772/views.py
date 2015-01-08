@@ -73,11 +73,45 @@ class Index(object):
     def videos_get(self):
         request = self.request
         vid_no = int(request.params['vid_no']) if 'vid_no' in request.params else 0
+        no_vids = int(request.params['no_vids']) if 'no_vids' in request.params else 0
         try:
-            videos = DBSession.query(Video).order_by(desc(Video.date_added))[vid_no:vid_no+6]
+            videos = DBSession.query(Video).order_by(desc(Video.date_added))[vid_no:vid_no+no_vids]
         except DBAPIError:
             return Response(conn_err_msg, content_type='text/plain', status_int=500)
         return { 'videos' : videos}
+
+    @view_config(route_name='videos',request_method='POST',
+            renderer='json')
+    def videos_post(self):
+        request = self.request
+        if request.params['url']:
+            url = request.params['url'] 
+            caption = request.params['caption']
+            if len(caption) > 1000:
+                message = "Your thoughts are too long."
+                return {'message': message, 'success': False }
+            capt = cgi.escape(caption)
+            num_views = Youtube.get_num_views(url)
+            t = Youtube.get_title(url)
+            vid = Youtube.video_id(url)
+            if num_views is False or t is False:
+                message = "That URL has a problem."
+                return {'message': message, 'success': False }
+            if num_views > 100:
+                message = "This video has over 100 views."
+                return {'message': message, 'success': False }
+            test = DBSession.query(Video).filter(Video.youtube_id == vid).first()
+            if test is not None:
+                message = "This video is already in IMG_1772."
+                return {'message': message, 'success': False }
+            # ok the video and caption are okay
+            video = Video(youtube_id=vid,title=t,caption=capt,added_by="test", views=
+                        num_views)
+            DBSession.add(video)
+            message = "Video added to IMG_1772."
+            return {'message': message, 'success': True }
+        message = "URL not set."
+        return {'message': message, 'success': False }
 
 conn_err_msg = """\
 Pyramid is having a problem using your SQL database.  The problem
