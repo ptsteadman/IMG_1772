@@ -72,18 +72,28 @@ $(document).ready(function(){
 
         request.done(function(data){
             $("#videos").append(data);
+            $(".player-wrapper").hover(function(){
+                $(this).css("-webkit-filter","none");
+                $(this).css("filter","none");
+                $(this).css("-moz-filter","none");
+            });
         });
         vid_no += 6;
     });
 
     $(".player-wrapper").hover(function(){
-        console.log("hey");
         $(this).css("-webkit-filter","none");
-    });
-    
-    $(".player-wrapper").on("touchstart",function(){
-        console.log("hey");
-        $(this).css("-webkit-filter","none");
+        $(this).css("filter","none");
+        $(this).css("-moz-filter","none");
     });
 
+    var isTouchDevice = 'ontouchstart' in document.documentElement;
+    if(isTouchDevice){
+        console.log("is touch");
+        $(".player-wrapper").css("-webkit-filter","none");
+        $(".player-wrapper").css("filter","none");
+        $(".player-wrapper").css("-moz-filter","none");
+
+    }
+    
 });
