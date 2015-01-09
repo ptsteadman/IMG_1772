@@ -141,6 +141,14 @@ p.validation {
     -moz-filter: grayscale(.9) hue-rotate(90deg);
 }
 
+@media only screen and (max-device-width: 1024px){
+    .player-wrapper {
+        filter: none;
+        -webkit-filter: none;
+        -moz-filter: none; 
+    }
+}
+
 .video {
     padding: 0px 0px !important;
     border-right: 4px solid black !important;
