@@ -56,10 +56,13 @@ class Youtube(object):
     def get_title(url):
         try:
             vid = Youtube.video_id(url)
-            data_url = "https://gdata.youtube.com/feeds/api/videos/" + vid
-            data_url = data_url + "?v=2&alt=json"
-            data = json.load(urllib2.urlopen(data_url))
-            title = data['entry']['title']['$t']
+            youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION,
+                developerKey=DEVELOPER_KEY)
+            response = youtube.videos().list(
+                id = vid,
+                part = "snippet"
+            ).execute()
+            title = response.get("items", [])[0]["snippet"]["title"]
         except:
             return False
         return title
@@ -99,6 +102,3 @@ class Youtube(object):
                 video_index = random.randint(0, len(videos) - 1)
 
         return videos[video_index]
-
-
-
