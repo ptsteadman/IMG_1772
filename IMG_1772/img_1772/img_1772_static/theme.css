@@ -134,6 +134,14 @@ p.validation {
     cursor: pointer;
 }
 
+#mobile-add-video .person {
+    height: 124px;
+}
+
+#mobile-add-video .crouch {
+    height: 124px;
+}
+
 .preview iframe {
     height: 100%;
     width: 65%;

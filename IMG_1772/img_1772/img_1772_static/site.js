@@ -26,7 +26,9 @@ $(document).ready(function(){
     });
 
     $(".add-video button[type=submit]").click(function(event){
-        $(".preview-player").hide();
+        
+        $("#mobile-preview-player").html('');
+        $("#preview-player").html('');
         $(".preview-buttons").hide();
         $(".person").hide();
         $(".crouch").show();
@@ -110,11 +112,19 @@ $(document).ready(function(){
             success: function(data){
                 $(".crouch").hide();
                 $(".preview-buttons").show();
-                var vid = data['vid']
-                app.src = "http://www.youtube.com/embed/" + vid 
+                var vid = data['vid'];
+                app.src = "http://www.youtube.com/embed/" + vid;
                 var options = "?controls=0&showinfo=0&modestbranding=1i&cc_load_policy=1"
+                var autoplay = "&autoplay=1";
                 var player = "<iframe class='player' src='" + app.src + options + "' frameborder='0' allowfullscreen></iframe>"
-                $(".preview-player").html(player);
+                var autoplayer = "<iframe class='player' src='" + app.src + options + autoplay +  "' frameborder='0' allowfullscreen></iframe>"
+                if($("#mobile-preview-player").is(":visible")){
+                    $("#mobile-preview-player").html(autoplayer);
+                    $("#preview-player").html(player);
+                } else {
+                    $("#preview-player").html(autoplayer);
+                    $("#mobile-preview-player").html(player);
+                }
             }
         });
     });
@@ -126,11 +136,19 @@ $(document).ready(function(){
             success: function(data){
                 $(".crouch").hide();
                 $(".preview-buttons").show();
-                var vid = data['vid']
-                app.src = "http://www.youtube.com/embed/" + vid 
+                var vid = data['vid'];
+                app.src = "http://www.youtube.com/embed/" + vid;
                 var options = "?controls=0&showinfo=0&modestbranding=1i&cc_load_policy=1"
+                var autoplay = "&autoplay=1";
                 var player = "<iframe class='player' src='" + app.src + options + "' frameborder='0' allowfullscreen></iframe>"
-                $(".preview-player").html(player);
+                var autoplayer = "<iframe class='player' src='" + app.src + options + autoplay + "' frameborder='0' allowfullscreen></iframe>"
+                if($("#mobile-preview-player").is(":visible")){
+                    $("#mobile-preview-player").html(autoplayer);
+                    $("#preview-player").html(player);
+                } else {
+                    $("#preview-player").html(autoplayer);
+                    $("#mobile-preview-player").html(player);
+                }
             }
         });
     });
