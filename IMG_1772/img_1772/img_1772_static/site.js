@@ -68,6 +68,7 @@ $(document).ready(function(){
                     $("#videos").prepend(data);
                     $("input[name=url]").val("");
                     $("textarea[name=caption]").val("");
+                    addEventListeners();
                 });
 
                 filler_vids.done(function(data){
