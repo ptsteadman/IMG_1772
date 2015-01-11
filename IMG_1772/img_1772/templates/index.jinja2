@@ -18,6 +18,7 @@ request.static_url('img_1772:img_1772_static/favicon.ico') }}">
 <link href="{{request.static_url('img_1772:img_1772_static/texgyrescholabolditalic.css')}}" rel="stylesheet">
 <script src="//oss.maxcdn.com/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="{{request.static_url('img_1772:img_1772_static/site.js')}}"></script>
+<script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
       <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -39,24 +40,45 @@ request.static_url('img_1772:img_1772_static/favicon.ico') }}">
                 views.</p></a>
         </div>
     </div>
+    <div class="row add-video visible-xs" id="mobile-add-video">
+        <div class="col-xs-12">
+            <div class="preview">
+                <img class="crouch" src=" {{ request.static_url('img_1772:img_1772_static/crouch.svg') }}">
+                <img class="person" src=" {{ request.static_url('img_1772:img_1772_static/person.png') }}">
+                <div class="preview-player"></div>
+                <div class="preview-buttons">
+                    <button type="button" class="btn btn-default another">Another</button>
+                    <br />
+                    <button type="button" class="btn btn-default another">Share</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
     <div class="row add-video">
-        <div class="col-xs-12 col-md-6">
+        <div class="col-xs-12 col-sm-6">
             <form class="form" method="post">
                 <input name="url" type="text" class="form-control" value="{{
                 url }}" placeholder="Enter a youtube URL...">
                 <textarea name="caption" class="form-control" rows="3"
                     placeholder="Enter your thoughts about this video...">{{
                     caption }}</textarea>
-                        <p class="pull-left hidden-xs">{{ message }}</p>
-                        <p class="pull-left validation visible-xs">{{ message }}</p>
+                        <p class="pull-left hidden-sm hidden-xs">{{ message }}</p>
+                        <p class="pull-left validation visible-xs visible-sm">{{ message }}</p>
                         <button  type="submit" class="btn btn-default pull-right">Submit</button>
             </form>
         </div>
-        <div class="col-md-6 hidden-xs hidden-sm" style="border-left: 2px solid
+        <div class="col-sm-6 hidden-xs" style="border-left: 2px solid
             black;">
-            <div id="preview">
-                <img id="crouch" src=" {{ request.static_url('img_1772:img_1772_static/crouch.svg') }}">
-                <img id="person" src=" {{ request.static_url('img_1772:img_1772_static/person.svg') }}">
+            <div class="preview">
+                <img class="crouch" src=" {{ request.static_url('img_1772:img_1772_static/crouch.svg') }}">
+                <img class="person" src=" {{ request.static_url('img_1772:img_1772_static/person.png') }}">
+                <div class="preview-player"></div>
+                <div class="preview-buttons">
+                    <button type="button" class="btn btn-default another">Another</button>
+                    <br />
+                    <button type="button" class="btn btn-default share">Share</button>
+                </div>
             </div>
         </div>
     </div>

@@ -1,6 +1,14 @@
 import json
 import urllib2
 from urlparse import urlparse, parse_qs
+from apiclient.discovery import build
+from apiclient.errors import HttpError
+from oauth2client.tools import argparser
+import random
+
+DEVELOPER_KEY = "AIzaSyDcwqu-TxwHNgmwowXCVhsnuoie6sSQgiY"
+YOUTUBE_API_SERVICE_NAME = "youtube"
+YOUTUBE_API_VERSION = "v3"
 
 class Youtube(object):
     ''' Class for getting data from youtube '''
@@ -32,11 +40,15 @@ class Youtube(object):
     def get_num_views(url):
         try:
             vid = Youtube.video_id(url)
-            data_url = "https://gdata.youtube.com/feeds/api/videos/" + vid
-            data_url = data_url + "?v=2&alt=json"
-            data = json.load(urllib2.urlopen(data_url))
-            num_views = data['entry']['yt$statistics']['viewCount']
-        except:
+            youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION,
+                developerKey=DEVELOPER_KEY)
+            response = youtube.videos().list(
+                id = vid,
+                part = "statistics"
+            ).execute()
+            num_views = response.get("items", [])[0]["statistics"]["viewCount"]
+        except Exception as exc:
+            print exc
             return False
         return int(num_views)
 
@@ -51,5 +63,42 @@ class Youtube(object):
         except:
             return False
         return title
+    
+    @staticmethod
+    def get_random_video():
+        youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION,
+                developerKey=DEVELOPER_KEY)
+        num = random.randint(1000,9999)
+
+        search_response = youtube.search().list(
+            q = "IMG_" + str(num),
+            part = "id",
+            maxResults = "25",
+            type = "video",
+            videoEmbeddable = "true"
+        ).execute()
+
+        videos = []
+
+        for result in search_response.get("items", []):
+            videos.append(result['id']['videoId'])
+        
+        video_index = random.randint(0, len(videos) - 1)
+        num_views = 1000
+        count = 0
+
+        while num_views < 100 and count < 30:
+            count = count + 1 # just in case
+            vid = videos[video_index]
+            response = youtube.videos().list(
+                id = vid,
+                part = "statistics"
+            ).execute()
+            num_views = int(response.get("items",[])[0]["statistics"]["viewCount"])
+            if num_views > 100:
+                video_index = random.randint(0, len(videos) - 1)
+
+        return videos[video_index]
+
 
 

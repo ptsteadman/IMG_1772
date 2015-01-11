@@ -19,5 +19,6 @@ def main(global_config, **settings):
     config.add_static_view('img_1772_static', 'img_1772_static', cache_max_age=3600)
     config.add_route('index', '/IMG_1772')
     config.add_route('videos', '/IMG_1772/videos')
+    config.add_route('random', '/IMG_1772/random')
     config.scan()
     return config.make_wsgi_app()

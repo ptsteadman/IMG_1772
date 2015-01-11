@@ -18,6 +18,7 @@ requires = [
     'transaction',
     'zope.sqlalchemy',
     'waitress',
+    'google-api-python-client'
     ]
 
 setup(name='IMG_1772',

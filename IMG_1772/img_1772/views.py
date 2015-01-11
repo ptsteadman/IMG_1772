@@ -113,6 +113,12 @@ class Index(object):
         message = "URL not set."
         return {'message': message, 'success': False }
 
+    @view_config(route_name='random',request_method='GET',
+            renderer='json')
+    def random_get(self):
+        video_id = Youtube.get_random_video()
+        return {'vid': video_id }
+        
 conn_err_msg = """\
 Pyramid is having a problem using your SQL database.  The problem
 might be caused by one of the following things:
