@@ -87,7 +87,7 @@ class Youtube(object):
         num_views = 1000
         count = 0
 
-        while num_views < 100 and count < 30:
+        while num_views > 100 and count < 30:
             count = count + 1 # just in case
             vid = videos[video_index]
             response = youtube.videos().list(
