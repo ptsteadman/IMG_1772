@@ -115,7 +115,7 @@ $(document).ready(function(){
                 $(".crouch").hide();
                 $(".preview-buttons").show();
                 var vid = data['vid'];
-                app.src = "http://www.youtube.com/embed/" + vid;
+                app.src = "https://www.youtube.com/embed/" + vid;
                 var options = "?controls=0&showinfo=0&modestbranding=1i&cc_load_policy=1"
                 var autoplay = "&autoplay=1";
                 var player = "<iframe class='player' src='" + app.src + options + "' frameborder='0' allowfullscreen></iframe>"
